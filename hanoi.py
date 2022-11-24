@@ -53,27 +53,20 @@ class Jeu:
         piquet_depart = self.piquet_(depart)
         
         if not piquet_arriver.est_vide():
-            assert piquet_arriver.p_dernier() > piquet_depart.p_dernier()
+            if not piquet_arriver.p_dernier() > piquet_depart.p_dernier():
+                return
         
         piquet_arriver.p_empiler(piquet_depart.p_dernier())
         piquet_depart.p_depiler()
         print(self.A)
         print(self.B)
         print(self.C)
-        
-        
-        
-    def affichage(self):
-        return 
  
 
-        
-jeu = Jeu(3)
-"""jeu.deplace(1, 3)
-jeu.deplace(1, 2)
-jeu.deplace(3,2)
-jeu.deplace(1,3)
-jeu.deplace(2,1)
-jeu.deplace(2,3)
-jeu.deplace(1,3)"""
-        
+# jeu.deplace(1, 3)
+# jeu.deplace(1, 2)
+# jeu.deplace(3,2)
+# jeu.deplace(1,3)
+# jeu.deplace(2,1)
+# jeu.deplace(2,3)
+# jeu.deplace(1,3)

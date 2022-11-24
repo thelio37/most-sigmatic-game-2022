@@ -17,7 +17,8 @@ class Pile:
        
     
     def dernier(self):
-        assert not self.est_vide()
+        if self.est_vide():
+            return 9999
         return self.pile[-1]
         
     def taille(self):
