@@ -32,7 +32,7 @@ class Interface:
         for i in range(len(self.jeu.A.piquet.pile)):
             pygame.draw.rect(self.screen, (255, 0, 0), pygame.Rect(110, 500 + 30 * i, 30 * self.jeu.A.piquet.pile[len(self.jeu.A.piquet.pile)-i-1], 20))
         for i in range(len(self.jeu.B.piquet.pile)):
-            pygame.draw.rect(self.screen, (255, 0, 0), pygame.Rect(540, 500 + 30 * i, 30 * self.jeu.B.piquet.pile[len(self.jeu.B.piquet.pile)-i-1], 20))
+            pygame.draw.rect(self.screen, (255, 0, 0), pygame.Rect(540, 350 + 30 * i, 30 * self.jeu.B.piquet.pile[len(self.jeu.B.piquet.pile)-i-1], 20))
         for i in range(len(self.jeu.C.piquet.pile)):
             pygame.draw.rect(self.screen, (255, 0, 0), pygame.Rect(940, 500 + 30 * i, 30 * self.jeu.C.piquet.pile[len(self.jeu.C.piquet.pile)-i-1], 20))
 
@@ -41,14 +41,8 @@ class Interface:
         Permet de lancer le jeu.
         """
         while self.state_pygame:
-            self.screen.blit(self.fond, (0, 0))
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.state_pygame = False
-            self.afficher_plateau()
 
-            for item in self.boutons:
-                item.draw()
+            self.screen.blit(self.fond, (0, 0))
 
             # Affichage des piquets
             for i in range(3):
@@ -60,6 +54,16 @@ class Interface:
                     x = 940
                 pygame.draw.rect(self.screen, (0, 0, 0), pygame.Rect(x, 150 if i == 1 else 355, 20, 250))
 
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.state_pygame = False
+            self.afficher_plateau()
+
+            # affiche les boutons
+            for item in self.boutons:
+                item.draw()
+
+            # vérifie l'état du clic pour chaque bouton
             for i in range(len(self.boutons)):
                 if self.boutons[i].isClicked():
                     correspondance_btn = {
